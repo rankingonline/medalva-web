@@ -76,7 +76,7 @@ body {
 .hero-section {
     position: relative;
     height: 400px;
-    background-image: url('../../assets/img/hero_bg.png');
+    background-image: url('../../assets/img/team/team-smile.JPG');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -203,6 +203,14 @@ body {
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s ease;
+}
+
+.bento-img-tall img {
+    object-position: 30% center;
+}
+
+.bento-img-square img {
+    object-position: 60% center;
 }
 
 .bento-box:hover img {
