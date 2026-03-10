@@ -617,7 +617,7 @@ body {
 }
 
 .home-values {
-    padding: 6rem 5%;
+    padding: 4rem 5%;
 }
 
 .values-container {
@@ -794,7 +794,7 @@ body {
 
 /* SERVICES SECTION */
 .home-services {
-    padding: 8rem 5%;
+    padding: 4rem 5%;
     background-color: var(--background-color);
     position: relative;
 }
@@ -974,7 +974,7 @@ body {
 
 /* NEWSLETTER SECTION */
 .home-newsletter {
-    padding: 8rem 5%;
+    padding: 4rem 5%;
     background-color: var(--background-color);
     position: relative;
     overflow: hidden;
@@ -1486,7 +1486,7 @@ body {
 
 /* TESTIMONIALS SECTION */
 .home-testimonials {
-    padding: 8rem 5%;
+    padding: 4rem 5%;
     background-color: #f7f9fc;
 }
 
@@ -1600,7 +1600,7 @@ body {
 
 /* ADVISORY SECTION (Bento Box) */
 .home-advisory {
-    padding: 8rem 5%;
+    padding: 3rem 5%;
     background-color: white;
 }
 
@@ -1681,7 +1681,7 @@ body {
 
 /* TUTORIALS SECTION */
 .home-tutorials {
-    padding: 8rem 5%;
+    padding: 3rem 5%;
     background-color: #fafafa;
 }
 
@@ -1943,7 +1943,7 @@ body {
 
 /* COMMITMENTS SECTION */
 .home-commitments {
-    padding: 8rem 5%;
+    padding: 4rem 5%;
     background-color: white;
 }
 
@@ -2010,7 +2010,7 @@ body {
 
 /* FINAL CTA SECTION */
 .home-final-cta {
-    padding: 10rem 5%;
+    padding: 6rem 5%;
     background: url('../../assets/img/hero-image.png') center/cover no-relative;
     position: relative;
     text-align: center;
