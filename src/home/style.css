@@ -629,90 +629,128 @@ body {
     text-align: center;
 }
 
-.values-grid {
+.values-header-row {
     display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 3rem;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.08);
+    gap: 2rem;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 2.5rem;
-    margin-top: 4rem;
 }
 
-.value-card {
-    flex: 1 1 calc(33.333% - 2.5rem);
-    max-width: calc(33.333% - 1.666rem);
-    background: white;
-    padding: 3rem 2rem;
-    border-radius: 20px;
-    border: 1px solid rgba(170, 23, 69, 0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    text-align: center;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-    z-index: 1;
+.values-header-desc {
+    font-size: 1.1rem;
+    color: #888;
+    max-width: 320px;
+    line-height: 1.5;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.values-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.value-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.2rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    cursor: default;
+    transition: background 0.25s ease, padding-left 0.25s ease;
+    border-radius: 8px;
+}
+
+.value-row:hover {
+    background: rgba(170, 23, 69, 0.03);
+    padding-left: 1.5rem;
+}
+
+.vrow-num {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    opacity: 0.3;
+    transition: opacity 0.25s ease;
+}
+
+.value-row:hover .vrow-num {
+    opacity: 1;
+}
+
+.vrow-title {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.value-row:hover .vrow-title {
+    color: var(--primary-color);
+}
+
+.vrow-desc {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    text-align: right;
+    transition: color 0.25s ease;
+}
+
+.value-row:hover .vrow-desc {
+    color: #333;
 }
 
 @media (max-width: 968px) {
-    .value-card {
-        flex: 1 1 calc(50% - 2.5rem);
-        max-width: calc(50% - 1.25rem);
+    .value-row {
+        grid-template-columns: 50px 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .vrow-desc {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    .values-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .values-header-desc {
+        text-align: left;
     }
 }
 
 @media (max-width: 600px) {
-    .value-card {
-        flex: 1 1 100%;
-        max-width: 100%;
+    .value-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 1.8rem 0;
     }
-}
 
-.value-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(170, 23, 69, 0.08);
-    border-color: rgba(170, 23, 69, 0.15);
-}
+    .vrow-num {
+        margin-bottom: 0.2rem;
+    }
 
-.card-icon {
-    width: 65px;
-    height: 65px;
-    margin: 0 auto 1.5rem;
-    background: rgba(170, 23, 69, 0.05);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-color);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
+    .vrow-desc {
+        grid-column: 1;
+    }
 
-.card-icon svg {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.4s ease;
-}
+    .value-row:hover {
+        padding-left: 0.5rem;
+    }
 
-.value-card:hover .card-icon {
-    background: var(--primary-color);
-    color: white;
-    transform: scale(1.08);
-    box-shadow: 0 10px 20px rgba(170, 23, 69, 0.2);
-}
-
-.value-card:hover .card-icon svg {
-    transform: rotate(5deg) scale(1.1);
-}
-
-.value-card h3 {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-    letter-spacing: -0.5px;
-}
-
-.value-card p {
-    color: #555;
-    font-size: 1.05rem;
-    line-height: 1.6;
+    .vrow-title {
+        font-size: 1.4rem;
+    }
 }
 
 /* TEAM SECTION */
@@ -1600,8 +1638,8 @@ body {
 
 /* ADVISORY SECTION (Bento Box) */
 .home-advisory {
-    padding: 3rem 5%;
-    background-color: white;
+    padding: 6rem 5%;
+    background-color: #0f1115;
 }
 
 .advisory-container {
@@ -1610,72 +1648,157 @@ body {
 }
 
 .advisory-header {
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
-.advisory-simple-cards {
+.advisory-header .section-title {
+    color: white;
+}
+
+.advisory-header .section-desc {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.advisory-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.adv-panel {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
     gap: 3rem;
-}
-
-.adv-simple-card {
-    background: #fdfdfd;
-    padding: 3.5rem 2.5rem;
+    padding: 3rem 3.5rem;
     border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.adv-simple-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(170, 23, 69, 0.08);
-    border-color: rgba(170, 23, 69, 0.2);
+.adv-panel:hover {
+    transform: scale(1.015);
 }
 
-.adv-simple-icon {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 2rem;
-    background: rgba(170, 23, 69, 0.05);
-    color: var(--primary-color);
+/* Subtle color per panel */
+.adv-panel--empresas {
+    background: linear-gradient(125deg, #1a1c24 60%, #2a1020 100%);
+}
+
+.adv-panel--autonomos {
+    background: linear-gradient(125deg, #1a1c24 60%, #16202a 100%);
+}
+
+.adv-panel--transporte {
+    background: linear-gradient(125deg, #1a1c24 60%, #1a201a 100%);
+}
+
+/* Left: tag + title */
+.adv-panel-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.adv-tag {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border: 1px solid rgba(170, 23, 69, 0.5);
+    color: rgba(170, 23, 69, 0.9);
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    width: fit-content;
+    background: rgba(170, 23, 69, 0.06);
+}
+
+.adv-panel-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+.adv-panel:hover .adv-panel-title {
+    color: #f4a8be;
+}
+
+/* Right: description + arrow */
+.adv-panel-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.adv-panel-right p {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.7;
+    transition: color 0.3s ease;
+    flex: 1;
+}
+
+.adv-panel:hover .adv-panel-right p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.adv-panel-arrow {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.4);
+    flex-shrink: 0;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.adv-simple-card:hover .adv-simple-icon {
+.adv-panel-arrow svg {
+    width: 20px;
+    height: 20px;
+}
+
+.adv-panel:hover .adv-panel-arrow {
     background: var(--primary-color);
+    border-color: var(--primary-color);
     color: white;
-    transform: scale(1.1);
-}
-
-.adv-simple-icon svg {
-    width: 32px;
-    height: 32px;
-}
-
-.adv-simple-card h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-}
-
-.adv-simple-card p {
-    font-size: 1.05rem;
-    color: #666;
-    line-height: 1.6;
+    transform: translateX(6px);
 }
 
 @media (max-width: 968px) {
-    .advisory-simple-cards {
+    .adv-panel {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        padding: 2.5rem 2rem;
+        gap: 1.5rem;
+    }
+
+    .adv-panel-right {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .adv-panel-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .home-advisory {
+        padding: 4rem 5%;
+    }
+
+    .adv-panel-title {
+        font-size: 1.5rem;
     }
 }
 
@@ -1943,8 +2066,8 @@ body {
 
 /* COMMITMENTS SECTION */
 .home-commitments {
-    padding: 4rem 5%;
-    background-color: white;
+    padding: 8rem 5%;
+    background-color: #f7f9fc;
 }
 
 .commitments-container {
@@ -1953,60 +2076,155 @@ body {
 }
 
 .commitments-header {
-    text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
-.commitments-grid {
+.commitments-featured-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
 }
 
-.commitment-card {
-    text-align: center;
-    padding: 2.5rem 2rem;
-    background: #fdfdfd;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Left: large featured card */
+.commit-featured {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #7d0b2b 100%);
+    border-radius: 24px;
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 380px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.commitment-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(170, 23, 69, 0.05);
+.commit-featured:hover {
+    transform: scale(1.02);
 }
 
-.commit-icon {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 1.5rem;
-    background: rgba(170, 23, 69, 0.05);
-    color: var(--primary-color);
+.commit-featured-deco {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+}
+
+.commit-featured-deco::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: -40px;
+    bottom: -40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.commit-featured-tag {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: auto;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.commit-featured h3 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.commit-featured p {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+}
+
+/* Right: stack of 3 compact cards */
+.commit-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.commit-compact-card {
+    background: white;
     border-radius: 16px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 108px;
+}
+
+.commit-compact-card:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 28px rgba(170, 23, 69, 0.08);
+}
+
+.commit-compact-bar {
+    width: 5px;
+    background: var(--primary-color);
+    flex-shrink: 0;
+    border-radius: 0;
+    opacity: 0.25;
+    transition: opacity 0.3s ease;
+}
+
+.commit-compact-card:hover .commit-compact-bar {
+    opacity: 1;
+}
+
+.commit-compact-body {
+    padding: 1.6rem 2rem;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
-.commit-icon svg {
-    width: 28px;
-    height: 28px;
-}
-
-.commitment-card h3 {
-    font-size: 1.25rem;
+.commit-compact-body h3 {
+    font-size: 1.15rem;
     font-weight: 800;
     color: var(--text-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.2px;
 }
 
-.commitment-card p {
-    font-size: 1rem;
+.commit-compact-body p {
+    font-size: 0.97rem;
     color: #666;
-    line-height: 1.6;
+    line-height: 1.55;
 }
+
+@media (max-width: 968px) {
+    .commitments-featured-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .commit-featured {
+        min-height: 280px;
+    }
+}
+
 
 /* FINAL CTA SECTION */
 .home-final-cta {
