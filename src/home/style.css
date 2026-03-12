@@ -61,17 +61,40 @@ body {
     transform: scale(1.03);
 }
 
+#main-navigation {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nav-item {
+    position: relative;
+}
+
 .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     text-decoration: none;
-    color: var(--text-muted);
-    font-weight: 500;
-    margin-left: 1.5rem;
-    transition: color 0.2s;
+    color: #1a2a3a;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
 }
 
 .nav-link:hover,
 .nav-link.active {
+    background: rgba(170, 23, 69, 0.07);
     color: var(--primary-color);
+}
+
+.nav-chevron {
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+    opacity: 0.75;
 }
 
 /* HERO VSL */
