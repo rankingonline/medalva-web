@@ -235,10 +235,18 @@ body {
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
 }
 
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+    display: block;
+}
+
 .video-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #111, #222);
     border-radius: 14px;
     display: flex;
     flex-direction: column;
@@ -250,22 +258,20 @@ body {
     position: relative;
 }
 
-.video-placeholder::before {
-    content: '';
+.hero-photo {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    background: url('../../assets/img/team/team-smile.JPG') center/cover;
-    opacity: 0.4;
-    mix-blend-mode: luminosity;
-    transition: transform 0.8s ease, opacity 0.4s ease;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+    z-index: 0;
+    transition: transform 0.8s ease;
 }
 
-.video-placeholder:hover::before {
+.video-placeholder:hover .hero-photo {
     transform: scale(1.05);
-    opacity: 0.6;
 }
 
 .play-icon {
