@@ -1860,6 +1860,17 @@ body {
     overflow: hidden;
 }
 
+.mockup-screen-img {
+    position: absolute;
+    top: 35px; /* below the top bar */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 35px);
+    object-fit: cover;
+    object-position: top left;
+    border-radius: 0 0 18px 18px;
+}
+
 /* Fake code / document inside main screen */
 .mockup-inner-content {
     width: 70%;
