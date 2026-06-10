@@ -1492,6 +1492,20 @@ body {
 
     .services-intro {
         position: static;
+        text-align: center;
+        align-items: center;
+    }
+
+    .intro-content,
+    .about-content {
+        text-align: center;
+    }
+
+    .intro-content .btn-primary,
+    .about-content .btn-primary {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
     }
 
     .about-container {
